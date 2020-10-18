@@ -20,10 +20,14 @@ def saveCustomerFeedback(request):
         cname = request.POST.get('cname','')
         cemail = request.POST.get('cemail','')
         cphone = request.POST.get('cphone','')
+        if(len(cphone)<7):
+            print('Incorrect mobile number')
         cmsg = request.POST.get('cmsg','')
+        
         crate = request.POST.get('crate',5)
         contact = Contact(contact_name=cname,contact_email=cemail,contact_phoneno=cphone,contact_msg=cmsg,contact_rate=crate)
         contact.save()
+        print(contact)
 
 def getCartProducts(request):
     if(request.method == 'POST'):
