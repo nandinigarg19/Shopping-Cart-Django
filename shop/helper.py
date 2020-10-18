@@ -20,7 +20,7 @@ def saveCustomerFeedback(request):
         cname = request.POST.get('cname','')
         cemail = request.POST.get('cemail','')
         cphone = request.POST.get('cphone','')
-        if(len(cphone)<7):
+        if(len(cphone)<7 and len(cphone)>12):
             print('Incorrect mobile number')
         cmsg = request.POST.get('cmsg','')
         
