@@ -1,0 +1,40 @@
+{% extends 'shop/basic.html' %}
+
+{% block styles %}
+    <link rel="stylesheet" href="../../static/shop/login.css">
+{% endblock %}
+
+{% block title %} ELACART - Login {% endblock %}
+
+{% block body %}
+
+    <div id="logreg-forms">
+        <form action="/shop/reset/password/" class="form-signin" method="POST" >     {% csrf_token %}
+            <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Sign in</h1>
+            
+            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+            <br><input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+            
+            <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i> Sign in</button>
+            <br><a href="#" id="forgot_pswd">Forgot password?</a>
+            <hr>
+            <p style="text-align: center;">Don't have an account!</p> 
+            <button class="btn btn-primary btn-block" type="button" id="btn-signup"><i class="fas fa-user-plus"></i> Create a New Account</button>
+        </form>
+
+        <form action="/shop/reset/password/" method="POST" class="form-reset">  {% csrf_token %}
+            <input type="email" id="resetEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+
+            
+            <button class="btn btn-primary btn-block" type="submit">Reset Password</button>
+            <a href="#" id="cancel_reset"><i class="fas fa-angle-left"></i> Back</a>
+        </form>
+        
+        <br>
+        
+    </div>
+{% endblock %}
+
+{% block JS %}
+    <script src="../../static/shop/login.js"></script>
+{% endblock %}

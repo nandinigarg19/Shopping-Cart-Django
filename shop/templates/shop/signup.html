@@ -1,0 +1,60 @@
+{% extends 'shop/basic.html' %}
+{% load static %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'shop/login.css' %}">
+{% endblock %}
+
+{% block title %} ELACART - Signup {% endblock %}
+
+{% block body %}
+    <div id="logreg-forms">
+        <form action="/shop/signup/user/" method="POST" class="form-signup">  {% csrf_token %}
+            <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Sign up</h1>
+            <p style="text-align: center;">{{msg}}</p> 
+            <input type="text" name="user-name" id="user-name" class="form-control" placeholder="Full name" required="" autofocus="">
+            <br><input type="tel" name="user-phone" id="user-phone" class="form-control" placeholder="Mobile number" required autofocus="">
+            <br><input type="text" name="user-add1" id="user-add1" class="form-control" placeholder="Address Line 1" required autofocus="">
+            <br><input type="text" name="user-add2" id="user-add2" class="form-control" placeholder="Address Line 2" autofocus="">
+            <br>
+            <div class="row">
+                <div class="col-md-4 col-lg-4">
+                    <input type="text" name="user-city" id="user-city" class="form-control" placeholder="City/Town" required autofocus="">
+                </div>
+                <div class="col-md-4 col-lg-4">
+                    <input type="text" name="user-state" id="user-state" class="form-control" placeholder="State" required autofocus="">
+                </div>
+                <div class="col-md-4 col-lg-4">
+                    <input type="text" name="user-pincode" id="user-pincode" class="form-control" placeholder="Pincode" reuired maxlength="6" autofocus="">
+                </div>
+            </div>
+            <br><br><input type="email" name="user-email" id="user-email" class="form-control" placeholder="Email address" required autofocus="">
+            <br><input type="password" name="user-pass" id="user-pass" class="form-control" placeholder="Password" required autofocus="">
+            <br><br>
+            <hr>
+            <p>In case you forget your password</p>
+            <select name="sq1" id="sq1" required>
+                <option value="" disabled selected>Choose the Security Question 1</option>
+                {% for sqkey,sqval in sqdict1.items %}
+                    <option value="{{sqkey}}">{{sqval}}</option>
+                {% endfor %}
+            </select>
+            <br><br>
+            <input type="text" name="user-sq1ans" id="user-sq1ans" class="form-control" placeholder="Your Answer 1" required autofocus="">
+            <br><br>
+            <select name="sq2" id="sq2" required>
+                <option value="" disabled selected>Choose the Security Question 2</option>
+                {% for sqkey,sqval in sqdict2.items %}
+                    <option value="{{sqkey}}">{{sqval}}</option>
+                {% endfor %}
+            </select>
+            <br><br>
+            <input type="text" name="user-sq2ans" id="user-sq2ans" class="form-control" placeholder="Your Answer 2" required autofocus="">
+            <hr>
+            <br><br>
+            <button class="btn btn-primary btn-block" type="submit" id="signup-btn"><i class="fas fa-user-plus"></i> Sign Up</button>
+            <br><a href="#" id="cancel_signup"><i class="fas fa-angle-left"></i> Back</a>
+        </form>
+        <br>
+        
+    </div>
+{% endblock %}

@@ -1,0 +1,10 @@
+.aboutdiv{
+    height : 100vh;
+    width: 100vw;
+    background-color: #343a40;
+    padding-top: 20px;
+    align-content: center;
+}
+.card{
+    text-align: center;
+}

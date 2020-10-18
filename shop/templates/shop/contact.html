@@ -1,0 +1,54 @@
+{% extends 'shop/basic.html' %}
+
+{% block styles %}
+    <link rel="stylesheet" href="../../static/shop/contact.css" />
+{% endblock %}
+
+{% block title %} ELACART - Contact us {% endblock %}
+{% block body %}
+<div class="container bg-dark">
+    <form onsubmit="submithandler()" action="/shop/contact/" method="POST"> {% csrf_token %}
+        <h1>Write to us...</h1>
+        <p style="text-align: center;">{{msg}}</p> 
+        <div class="form-group">
+            <label for="cname">Name</label>
+            <input type="text" class="form-control" id="cname" name="cname" required>
+        </div>
+        <div class="form-group">
+            <label for="cemail">Email address</label>
+            <input type="email" class="form-control" id="cemail" name="cemail" aria-describedby="emailHelp" required>
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+            <label for="cphone">Phone Number</label>
+            <input type="tel" class="form-control" id="cphone"  name="cphone" aria-describedby="phoneHelp" required>
+            <small id="phoneHelp" class="form-text text-muted">We'll never share your Phone Number with anyone else.</small>
+        </div>
+        <div class="form-group">
+            <label for="cmsg">Enter your Message here. </label>
+            <textarea class="form-control" id="cmsg" rows="5"  name="cmsg" required></textarea>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <div class="rating">
+            <label>Give us a Rating  </label>
+            <span><input type="radio" name="rating" id="str5" value="5"><label for="str5"></label></span>
+            <span><input type="radio" name="rating" id="str4" value="4"><label for="str4"></label></span>
+            <span><input type="radio" name="rating" id="str3" value="3"><label for="str3"></label></span>
+            <span><input type="radio" name="rating" id="str2" value="2"><label for="str2"></label></span>
+            <span><input type="radio" name="rating" id="str1" value="1"><label for="str1"></label></span>
+            <input type="text" id="crate" name="crate" style="display: none;">
+        </div>
+        <br />
+        <br />
+        <button type="submit" class="btn btn-secondary">Submit</button>
+        <br />
+        <br />
+    </form>
+</div>
+{% endblock %}
+
+
+{% block JS %}
+
+<script src="../../static/shop/contact.js"></script>
+{% endblock %}

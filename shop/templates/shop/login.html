@@ -1,0 +1,60 @@
+<html>
+  <head>
+
+    {% load static %}
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'shop/login.css' %}">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/ee7c4af1cd.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      message = "ELACART - India's NO. 1 Shopping Site ";
+      function step() {
+        message = message.substr(1) + message.substr(0,1);
+        document.title = message.substr(0,20);
+      }
+    </script>
+  </head>
+  <body>
+    <div class="row bg">
+      <div class="left-panel col-lg-4">
+        <img src="/media/shop/images/cart_logo.gif">
+      </div>
+      <div class="col-lg-2"></div>
+      <div class="col-lg-4" id="logreg-forms">
+        <form action="/shop/login/user/" class="form-signin" method="POST" >     {% csrf_token %}
+            <br>
+            <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Log in</h1>
+            <br>
+            <br>
+            <p style="text-align: center;">{{msg}}</p> 
+            <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+            <br>
+            <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required="">
+            <br><br>
+            <button class="btn btn-success btn-block" type="submit">
+                <i class="fas fa-sign-in-alt"></i> Log in
+            </button>
+            <br><a href="#" id="forgot_pswd">Forgot password?</a>
+            <hr>
+            <p style="text-align: center;">Don't have an account!</p> 
+            <a href="/shop/signup">
+                <button class="btn btn-primary btn-block" type="button" id="btn-signup">
+                    <i class="fas fa-user-plus"></i> Create a New Account
+                </button>
+            </a>
+        </form>
+        <br>
+      </div>
+      <div class="col-lg-2"></div>
+    </div>
+  </body>
+</html>

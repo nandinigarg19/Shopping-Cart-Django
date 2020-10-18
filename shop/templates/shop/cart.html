@@ -1,0 +1,56 @@
+{% extends 'shop/basic.html' %}
+{% load static %}
+{% block body %} 
+<div class="CartComps my-4 mx-4">
+    <h3>Shopping Cart</h3>
+    <div class="my-4">
+                        
+    {% ifequal myProds|length 0 %}
+        <hr>
+        <h5>No Items in your cart! Let us buy something ...</h5>
+        <hr>
+    {% else %}
+        <div style="text-align:right; margin-right: 150px;">
+            <h6>Price</h6>
+        </div>
+        <hr>
+        
+        {% for key,item in myProds.items %}
+            <div class="card mb-4" style="max-width: 100vw; height: 170px">
+                <div class="row no-gutters">
+                    <div class="col-md-2">
+                        <img src="{{item.img}}" class="card-img" alt="No" height="140px"></img>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="card-body row">
+                            <p class="card-title col-md-9" style="font-size: 0.90em; font-weight: bolder;">{{item.name}} ( X {{item.qty}} )</h5>
+                            <p class="card-text col-md-3" style="color: #B12704; font-size: 0.90em; font-weight: bold;"> <i class="fas fa-rupee-sign"></i>&nbsp;&nbsp;{{item.price}} x {{item.qty}} &nbsp;&nbsp; = &nbsp;&nbsp; <i class="fas fa-rupee-sign"></i><b>&nbsp;&nbsp;{{item.total}}</b></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+        {% endfor %}
+        </div>
+        <div style="text-align:right; margin-right: 80px;">
+        <h5>Total: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="totalPrice" style="color: #B12704; font-size: 1.1em; font-weight: bold;"></span></h5>
+    
+    {% endifequal %}
+    </div>
+    <div>
+        <hr>
+        <form class="home" action="/shop/" method="POST"> {% csrf_token %}
+            <input type="hidden" id="uname3" name="uname3" value="Login" />
+            <button type="submit" class="btn btn-primary mr-4">Shop More</button>
+        </form>
+        {% if myProds|length > 0%}
+            <button type="button" class="btn btn-success mr-4" onclick="">Checkout</button> 
+            <button type="button" class="btn btn-danger" onclick="clearCart()">Clear Cart</button>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+{% block JS %}
+    <script src="{% static 'shop/cart.js' %}"></script>
+{% endblock %}
+
